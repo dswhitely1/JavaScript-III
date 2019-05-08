@@ -15,6 +15,7 @@
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
+
 function GameObject(gameObjectAttrs) {
 	this.createdAt = gameObjectAttrs.createdAt;
 	this.name = gameObjectAttrs.name;
@@ -127,3 +128,18 @@ console.log(mage);
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+function Villian(villianAttrs) {
+	Humanoid.call(villianAttrs);
+}
+
+Villian.prototype = Object.create(Humanoid.prototype);
+Villian.prototype.deathanddecay = function() {
+	return `${this.name} attacks the hero for 5 shadow damage`;
+};
+
+function Hero(heroAttrs) {
+	Humanoid.call(heroAttrs);
+}
+
+Hero.prototype = Object.create(Humanoid.prototype);

@@ -47,16 +47,16 @@ console.log(Wilma.speak());
 function freakyFriday(messedUp) {
 	this.greeting = `Houston, we have a problem!`;
 	this.name = messedUp;
-	this.speak = function() {
-		return `${this.name}, ${this.greeting}`;
+	this.speak = function(param1, param2, param3) {
+		return `${this.name}, ${this.greeting}, I love ${param1}, ${param2}, and ${param3}`;
 	};
 }
-
+const ourLikes = [ 'React', 'Javascript', 'HTML' ];
 const Tess = new freakyFriday('Jamie Lee Curtis');
 const Anna = new freakyFriday('Lindsay Lohan');
 
 console.log(Tess.speak());
 console.log(Anna.speak());
 
-console.log('Jamie Lee Curtis was called: ', Tess.speak.call(Anna));
-console.log('Lindsay Lohan was called: ', Anna.speak.apply(Tess));
+console.log(Tess.speak.call(Anna, ...ourLikes));
+console.log(Anna.speak.apply(Tess, ourLikes));
